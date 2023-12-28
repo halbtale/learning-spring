@@ -1,0 +1,18 @@
+package com.alberto.learningspring.examples.c1;
+
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+
+@Service
+public class BusinessCalculatorService {
+    private final DataService dataService;
+
+    BusinessCalculatorService(DataService dataService) {
+        this.dataService = dataService;
+    }
+    public int findMax() {
+        return Arrays.stream(dataService.retrieveData()).max().orElse(0);
+    }
+}
